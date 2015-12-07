@@ -45,7 +45,7 @@ class MQTTProtocol(Protocol):
             if len(self.buffer) >= length + lenLen + 1:
                 chunk = self.buffer[:length + lenLen + 1]
                 self._processPacket(chunk)
-                self.buffer = self.buffer[length + lenLen + 1:]
+                self.buffer[:] = self.buffer[length + lenLen + 1:]
                 length = None
 
             else:
